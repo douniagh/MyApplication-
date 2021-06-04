@@ -1,0 +1,10 @@
+{% extends 'app1/base.html' %}
+{% block content %}
+<form class="example" method="post" action="{% url 'search_programme' %}" style="margin:auto;max-width:300px">
+  {% csrf_token %}
+
+  <input type="text" placeholder="Search.." name="searched">
+  <button type="submit"><i class="fa fa-search"></i></button>
+
+</form>
+{% endblock content %}

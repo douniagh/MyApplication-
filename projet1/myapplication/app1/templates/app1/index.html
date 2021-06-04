@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Vanilla Bootstrap v4.2.1 Theme</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="{% static 'app1/css/bootstrap.min.css'%}">
+        <link rel="stylesheet" href="{% static 'app1/css/fontAwesome.css'%}">
+        <link rel="stylesheet" href="{% static 'app1/css/hero-slider.css'%}">
+        <link rel="stylesheet" href="{% static 'app1/css/templatemo-main.css'%}">
+        <link rel="stylesheet" href="{% static 'app1/css/owl-carousel.css'%}">
+
+        <link href="C:\1CS\S2\Projet\templatemo_526_vanilla\fonts\Roboto-Light.ttf" rel="stylesheet">
+
+        <script src="{% static 'app1/js/modernizr-2.8.3-respond-1.4.2.min.js'%}"></script>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+<!--
+Vanilla Template
+https://templatemo.com/tm-526-vanilla
+-->
+<body>
+
+    <div class="fixed-side-navbar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#home"><span>Intro</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#SeConnecter"><span>Connexion</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#plus"><span>A propos</span></a></li>
+        </ul>
+    </div>
+    <div class="parallax-content baner-content" id="home">
+        <div class="container">
+            <div class="first-content">
+                <h1>Comission</h1>
+                <span><em> des œuvres sociales</em></span>
+                <div class="primary-button">
+                    <a href="#SeConnecter">Se connecter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="limiter" id="SeConnecter">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" method = "POST" action="">
+                {% csrf_token %}
+                <span class= "login100-form-title p-b-26">
+                    Connectez vous
+                </span>
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
+
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+                    <input class="input100" type="text" name="username">
+                    <span class="focus-input100" data-placeholder="Utilisateur"></span>
+                </div>
+                {% if form.username.errors %}
+                    <p style="color:red;"><b>{{ form.username.errors }}</b></p>
+                {% endif %}
+                <br>
+
+                <div class="wrap-input100 validate-input" data-validate="Entrer mot de passe">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input class="input100" type="password" name="password">
+                    <span class="focus-input100" data-placeholder="Mot de passe"></span>
+                </div>
+                {% if form.username.errors %}
+                    <p style="color:red;"><b>{{ form.password.errors }}</b></p>
+                {% endif %}
+                <br>
+
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <p style="color:red;"><b>{{ error }}</b></p>
+                    {% endfor %}
+                {% endif %}
+
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" type="submit"> Se connecter </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="{% static 'app1/js/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="{% static 'app1/js/main.js' %}"></script>
+
+    <div class="plus-content" id="plus">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="left-text">
+                        <h4>À Propos De Nous</h4>
+                        <div class="line-dec"></div>
+                        <p>La commission des oeuvres sociales (COS) est chargée de gérer les fonds des oeuvres sociales et de concevoir et 
+                            organiser diverses actions visant l’amélioration du bienêtre physique et moral des travailleurs et de leurs 
+                            familles ainsi que des retraités. Parmi ces actions on compte :
+                        </p>
+                        <ul>
+                            <li>- Le prêt social médical.</li>
+                            <li>- Prêt voyage.</li>
+                            <li>- Les prêts électroménagers.</li>
+                            <li>- Les dons.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="map">
+                    <!-- How to change your own map point
+                           1. Go to Google Maps
+                           2. Click on your location point
+                           3. Click "Share" and choose "Embed map" tab
+                           4. Copy only URL and paste it within the src="" field below
+                    -->
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1197183.8373802372!2d-1.9415093691103689!3d6.781986417238027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb96f349e85efd%3A0xb8d1e0b88af1f0f5!2sKumasi+Central+Market!5e0!3m2!1sen!2sth!4v1532967884907" width="100%" height="390" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>     
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="primary-button">
+                        <a href="#home">Acceuil</a>
+                    </div>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2019 Company Name 
+            
+            		- Design: <a rel="nofollow noopener" href="https://templatemo.com"><em>TemplateMo</em></a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="{% static 'app1/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app1/js/plugins.js' %}"></script>
+    <script src="{% static 'app1/js/main.js' %}"></script>
+    <script>
+        function openCity(cityName) {
+            var i;
+            var x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+               x[i].style.display = "none";  
+            }
+            document.getElementById(cityName).style.display = "block";  
+        }
+    </script>
+
+    <script>
+        $(document).ready(function(){
+          // Add smooth scrolling to all links
+          $(".fixed-side-navbar a, .primary-button a").on('click', function(event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+              // Prevent default anchor click behavior
+              event.preventDefault();
+
+              // Store hash
+              var hash = this.hash;
+
+              // Using jQuery's animate() method to add smooth page scroll
+              // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 800, function(){
+           
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              });
+            } // End if
+          });
+        });
+    </script>
+
+</body>
+</html>

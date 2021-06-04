@@ -1,0 +1,234 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Session admin</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="{% static 'app1/css/templatemo-main.css' %}">
+        <link rel="apple-touch-icon" href="{% static 'app1/img/apple-touch-icon.png' %}">
+        <link rel="stylesheet" href="{% static 'app1/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'app1/css/fontAwesome.css' %}">
+        <link rel="stylesheet" href="{% static 'app1/css/hero-slider.css' %}">
+        <link rel="stylesheet" href="{% static 'app1/css/Admin.css' %}">
+        <link rel="stylesheet" href="{% static 'app1/css/owl-carousel.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'app1/css/default.css' %}" />
+		<link rel="stylesheet" type="text/css" href="{% static 'app1/css/component.css' %}" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'app1/css/templatemo-main.css' %}">
+
+        <!-- links of base.html -->
+
+
+        <style type="text/css">
+        .fa_custom {
+        color:
+        #ffffff
+        }
+        </style>
+
+        <script src="{% static 'app1/js/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+        <script src="{% static 'app1/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'app1/js/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static 'app1/js/npm.js' %}"></script>
+        <script src="{% static 'app1/js/plugins.js' %}"></script>
+        <script src="{% static 'app1/js/modernizr.custom.js' %}"></script>
+        <script src="{% static 'app1/js/main.js' %}"></script>
+        <script src="{% static 'app1/js/cbpHorizontalMenu.js' %}"></script>
+        <script src="{% static 'app1/js/cbpHorizontalMenu.min.js' %}"></script>
+
+        <script type="text/javascript" src="scripts.js">
+        </script>
+
+    </head>
+<!--
+Vanilla Template
+https://templatemo.com/tm-526-vanilla
+-->
+<body>
+
+    <div class="fixed-side-navbar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#home"><span>Intro</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#our-story"><span> Programme</span></a></li>
+        </ul>
+    </div>
+
+    <div class="parallax-content baner-content" id="home">
+
+    </div>
+
+    <div class="tabs-content" id="our-story">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <header class="clearfix" id="myid">
+                        <span>ESI-SBA</span>
+                        <h1>Programme des oeuvres sociales</h1>
+                    </header>
+                    <div class="main">
+                        <nav id="cbp-hrmenu" class="cbp-hrmenu">
+                            <ul>
+                                {% for partie in parties %}
+                                    <li>
+                                        <a href="#">{{ partie }}</a>
+                                        {% if partie.chapitre_set.all %}
+                                            <div class="cbp-hrsub">
+                                                <div class="cbp-hrsub-inner">
+                                                    {% for chapitre in partie.chapitre_set.all %}
+                                                    <div>
+                                                        <h4>{{ chapitre }}</h4>
+                                                        <ul>
+                                                            {% for article in chapitre.article_set.all %}
+                                                                <li><a href="#">{{ article }}</a></li>
+                                                            {% endfor %}
+                                                            <li>
+                                                                <a class="bt more-bt" href="javascript:void(0)">
+                                                                    <span class="fl"></span><span class="sfl"></span><span class="cross"></span><i></i>
+                                                                    <p>add</p>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div><!-- /cbp-hrsub-inner -->
+                                            </div><!-- /cbp-hrsub -->
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                                <li>
+                                    <div class="box">
+                                        <a class="button" href="#popup1"><i class="fa fa-plus fa_custom fa-x"></i></a>
+                                    </div>
+                                </li>
+                                <div id="popup1" class="overlay">
+                                    <div class="popup">
+                                        <form method="POST" action="">
+                                            {% csrf_token %}
+
+                                            <h3>Ajouter un chapitre</h3>
+                                            <h2>Choisissez un nom pour votre nouvelle partie :</h2>
+                                            <br>
+                                            <div class="form-check">
+                                                <input type="text" class="form-control" placeholder="Titre" name="titre">
+                                                <div class="error">
+                                                    <p style="color:red;">{{ form1.titre.errors.as_text }}</p>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <h2>Entrer le budget de votre partie :</h2>
+                                            <br>
+
+                                            <br>
+                                            <br>
+                                            <button type="submit" class="btn btn-secondary" name="partie_create" value="partie_create">Save</button>
+                                            <a class="close" href="#">&times;</a>
+                                            <br><br>
+                                            {% if success %}
+                                                <p style="color:green;">{{ message|escape }}</p>
+                                            {% endif %}
+                                        </form>
+
+                                        <div class="content">
+                                            Thank to pop me out of that button, but now i'm done so you can close this window.
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="form-check">
+                <input type="text" class="form-control" placeholder="Titre" name="titre">
+                <p style="color:red;">{{ form2.titre.errors.as_text }}</p>
+            </div>
+            <br>
+            <div class="form-check">
+                <input type="text" class="form-control" placeholder="Budget" name="budget">
+                <p style="color:red;">{{ form2.budget.errors.as_text }}</p>
+            </div>
+            <br>
+
+            <p>{{ form2.partie.label}} {{ form2.partie }} </p>
+            <p style="color:red;">{{ form2.partie.errors.as_text }}</p>
+            <br><br>
+
+            <button type="submit" class="btn btn-secondary" name="chapitre_create" value="chapitre_create">Save</button>
+            <br>
+            {% if success %}
+                <p style="color:green;">{{ message|escape }}</p>
+            {% endif %}
+        </form>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'app1/js/vendor/jquery-1.11.2.min.js' %}"><\/script>')</script>
+    <script src="{% static 'app1/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'app1/js/plugins.js' %}"></script>
+    <script src="{% static 'app1/js/main.js' %}"></script>
+    <script>
+        function openCity(cityName) {
+            var i;
+            var x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+               x[i].style.display = "none";
+            }
+            document.getElementById(cityName).style.display = "block";
+        }
+    </script>
+
+    <script>
+        $(document).ready(function(){
+          // Add smooth scrolling to all links
+          $(".fixed-side-navbar a, .primary-button a").on('click', function(event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+              // Prevent default anchor click behavior
+              event.preventDefault();
+
+              // Store hash
+              var hash = this.hash;
+
+              // Using jQuery's animate() method to add smooth page scroll
+              // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 800, function(){
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              });
+            } // End if
+          });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{% static 'app1/js/cbpHorizontalMenu.min.js' %}"></script>
+    <script>
+        $(function() {
+            cbpHorizontalMenu.init();
+        });
+    </script>
+
+    <div class="addition" id="add">
+        <input>
+    </div>
+</body>
+</html>

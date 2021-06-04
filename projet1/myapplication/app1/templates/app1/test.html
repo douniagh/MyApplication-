@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" action="">
+    {% csrf_token %}
+    <input type="text" name="titre" value="titre">
+    <button type="submit" name="save_partie">save partie</button>
+</form>
+
+
+<form method="post" action="">
+    {% csrf_token %}
+    <input type="text" name="titre" value="titre">
+     <input type="text" name="partie" value="partie">
+    <button type="submit" name="save_chapitre">save chapitre</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'app1/base.html' %}
+
+{% block title %}
+Delete
+{% endblock title %}
+
+{% block content %}
+<p>Are you sure u want to delete {{ item }}</p>
+
+<form action="" method="post">
+  {% csrf_token %}
+  <input type="submit" name="Confirm" value="Confirm">
+  <a href="{% url 'index' %}">Cancel</a>
+</form>
+{% endblock content %}
